@@ -19,6 +19,6 @@ jobs:
           with:
             name: my-artifact
             path: D:\a\turbo-computing-machine\turbo-computing-machine\
-        - name: Download all workflow run artifacts
-          uses: actions/download-artifact@v3
+        #- name: Download all workflow run artifacts
+        #  uses: actions/download-artifact@v3
     
