@@ -15,7 +15,5 @@ jobs:
           uses: actions/setup-dotnet@v3
           with:
             dotnet-version: ${{ matrix.dotnet-version }}
-        - run: dir
         - name: build
           run: dotnet build NahidaImpact.sln
-        - run: dir
