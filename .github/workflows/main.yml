@@ -15,7 +15,7 @@ jobs:
             dotnet-version: "7.0.x"
         - run: dir
         - run: dotnet build NahidaImpact.sln
-        - uses: actions/upload-artifact@v3
+        - uses: actions/upload-artifact@v4
           with:
             name: my-artifact
             path: D:\a\turbo-computing-machine\turbo-computing-machine\
