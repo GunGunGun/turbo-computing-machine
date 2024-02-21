@@ -2,19 +2,13 @@ name: Context testing
 on: 
     workflow_dispatch:
 
-jobs:
-   board-automation:
-    strategy:
-        matrix:
-            os: [windows-latest]
-    runs-on: ${{matrix.os}}
-    steps:
-        - uses: actions/setup-dotnet@v3
-          with:
-            dotnet-version: "8.0.x"
-        - name: Install dependencies
-          run: dotnet restore
-        - name: Build
-          run: dotnet build
-        - name: Test with the dotnet CLI
-          run: dotnet test
+steps:
+    - uses: actions/checkout@v4
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - run: dir
+    - name: Build
+      run: dotnet build NahidaImpact.sln
+    - run: dir
