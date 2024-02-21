@@ -3,17 +3,19 @@ on:
     workflow_dispatch:
 jobs:
   build:
-
     runs-on: windows-latest
     strategy:
       matrix:
-        dotnet-version: [ '8.0.x' ]
-
-      steps:
-        - uses: actions/checkout@v4
-        - name: Setup dotnet
-          uses: actions/setup-dotnet@v3
-          with:
-            dotnet-version: ${{ matrix.dotnet-version }}
-        - name: build
-          run: dotnet build NahidaImpact.sln
+        dotnet: [ '8.0.x' ]
+    name: Dotnet ${{ matrix.dotnet }} sample
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        id: stepid
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+      - name: Create temporary global.json
+        run: echo '{"sdk":{"version": "${{ steps.stepid.outputs.dotnet-version }}"}}' > ./global.json
+      - name: Execute dotnet
+        run: dotnet build NahidaImpact.sln
